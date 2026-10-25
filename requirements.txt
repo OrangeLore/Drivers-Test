@@ -1,0 +1,18 @@
+# Core (needed to import a handbook PDF and generate questions)
+pypdf>=4.0
+requests>=2.31
+defusedxml>=0.7.1
+
+# Real road-sign / figure extraction from PDFs (optional but recommended)
+PyMuPDF>=1.24
+opencv-python-headless>=4.9
+numpy>=1.26
+
+# The web app + built-in Alberta/Ontario sets run with NO dependencies at all —
+# they only need Python's standard library (tools/app_server.py). The packages above
+# are only used when you import a new jurisdiction's handbook.
+#
+# You also need a local OpenAI-compatible LLM server running for imports:
+#   - LM Studio (default http://localhost:1234/v1), or
+#   - Ollama (http://localhost:11434/v1)
+# Set AC7_LLM_URL if it's not the LM Studio default.

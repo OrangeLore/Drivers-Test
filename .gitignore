@@ -1,0 +1,42 @@
+# Per-user saved progress (profiles, stats) — never commit
+store/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*token*.json
+.cloudflared/
+node_modules/
+dist/
+playwright-report/
+test-results/
+
+# Imported handbooks and generated sets (users add their own)
+handbooks/
+*-testset.json
+*.log
+
+# Big source PDFs (optional to ship; keep the repo light)
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Scratch / temp / legacy leftovers (won't be committed)
+_*.ps1
+_*.py
+_*.png
+tools/_*.py
+tools/_*.ps1
+figures_*/
+images/gen/
+guide_text.txt
+start_local.bat
+*.tmp

@@ -1,0 +1,31 @@
+name: Security and regression checks
+# Static commands only; no event-payload interpolation or repository secrets.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Install test-only XML parser
+        run: python -m pip install defusedxml==0.7.1
+      - name: Python security regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Browser import validation tests
+        run: node --test tests/security.test.cjs
+      - name: Syntax checks
+        run: python -m compileall -q tools tests
