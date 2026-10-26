@@ -4,8 +4,8 @@ generator.py — the ONE generic pipeline that turns ANY driver's-handbook PDF (
 into a complete test set for the app. Used by both the in-app import server (app_server.py)
 and the CLI (generate_dataset.py). Offline: local Ollama model only.
 
-Stages: extract -> chunk (whole doc) -> LLM generate across all chunks -> dedupe ->
-validate -> auto-attach images (shared sign library + parametric speed signs) -> dataset.
+Stages: identify reviewed source pictures -> extract/chunk -> grounded text generation ->
+dedupe (including picture identity) -> dataset. No guessed or AI-drawn sign attachments.
 """
 import base64, io, json, os, re, urllib.request
 
@@ -38,11 +38,11 @@ For EACH question:
 - Include a "quote": a SHORT word-for-word snippet copied verbatim from the passage that proves the
   correct answer (5-20 words, copied exactly, no paraphrasing). If you cannot copy such a quote from
   THIS passage, do not include that question.
-- If it asks what a specific standard road sign means, add "sign" (e.g. "stop", "yield",
-  "no left turn", "railway crossing", "school zone", "speed limit 50").
+- Write text-only questions that stand on their own. Do not refer to "this sign", a picture,
+  a diagram or an illustration; do not invent or supply image URLs or sign artwork.
 - "section":"signs" for sign-identification questions, else "section":"rules".
 Return STRICT JSON only — a JSON array; each element:
-  {{"q":"...","options":["A","B","C","D"],"answer":<0-3>,"topic":"short topic","difficulty":"easy|standard|hard","section":"signs|rules","sign":"<or omit>","quote":"verbatim snippet from the passage"}}
+  {{"q":"...","options":["A","B","C","D"],"answer":<0-3>,"topic":"short topic","difficulty":"easy|standard|hard","section":"signs|rules","quote":"verbatim snippet from the passage"}}
 No prose, no markdown fences — JSON array only.
 
 PASSAGE:
@@ -157,6 +157,9 @@ def grounded(quote, chunk_norm):
         return False
     return qn in chunk_norm
 
+def needs_picture(text):
+    return bool(re.search(r'\b(?:this|that|pictured|shown|following|the)\s+(?:road\s+)?sign\b|\bsign\s+(?:shown|pictured|illustrated|above|below)\b|\b(?:picture|diagram|illustration|image)\b',text,re.I))
+
 def ingest_samples(full_text):
     """Ingest official 'Test yourself / Answer Key' sample questions verbatim, if present.
     Conservative: only returns questions that parse cleanly with a matching answer key."""
@@ -178,7 +181,7 @@ def ingest_samples(full_text):
             continue
         opts = re.findall(r"(?m)^\s*(?:[1-4]\.|[a-dA-D]\)|[a-dA-D]\.)\s*(.+)$", seg)
         qtext = seg.strip().split("\n")[0].strip()
-        if len(opts) >= 4 and qtext and keymap[num] < 4:
+        if len(opts) >= 4 and qtext and keymap[num] < 4 and not needs_picture(qtext):
             out.append({"q": qtext, "options": [o.strip() for o in opts[:4]],
                         "answer": keymap[num], "topic": "Sample question",
                         "diff": "standard", "section": "rules",
@@ -200,13 +203,12 @@ def attach_images(questions, unit="km/h"):
     attached = 0
     for q in questions:
         sign = (q.get("sign") or "").strip().lower()
-        # Images are NEVER synthesized/generated. Only real, public-domain official signs from the
-        # shared library (populated by tools/fetch_signs.py from Wikimedia/US DOT) are attached,
-        # matched by sign name. Questions without a real match stay text-only.
+        # Use exact curated sign names, never substring guesses such as moose -> deer
+        # or left lane ends -> right lane ends. Imported sets still need jurisdiction review.
         matched = None
         if sign:
             for name, file in SIGN_SYNONYMS:
-                if name in sign or sign in name:
+                if name == sign:
                     matched = (name, file); break
         if matched:
             q["image"] = matched[1]
@@ -222,7 +224,7 @@ def _norm(s):
 def dedupe(questions):
     seen, out = set(), []
     for q in questions:
-        k = _norm(q["q"])
+        k = (_norm(q["q"]), q.get('image') or '')
         if k in seen:
             continue
         seen.add(k); out.append(q)
@@ -244,6 +246,11 @@ def generate(model, chunks, target, per_chunk=6, progress=None):
                 rejected += 1; continue
             if not grounded(q.get("quote", ""), chunk_norm):   # REJECT ungrounded (not in source)
                 rejected += 1; continue
+            # Text generation cannot supply or invent the source picture.
+            if needs_picture(q['q']):
+                rejected += 1; continue
+            for field in ('image','imageProvenance','alt','sign'):
+                q.pop(field,None)
             q["source"] = "pp. %s-%s" % (p0, p1)
             q["grounding"] = "pp. %s-%s · \"%s\"" % (p0, p1, (q.get("quote", "") or "").strip()[:120])
             q.pop("quote", None)
@@ -258,7 +265,10 @@ def generate(model, chunks, target, per_chunk=6, progress=None):
 
 def build_dataset(meta, questions, unit="km/h"):
     questions = dedupe(questions)
-    attach_images(questions, unit=unit)
+    # Reviewed visual questions already contain their actual source picture.
+    # Never attach a library look-alike to LLM text from an unidentified handbook.
+    for question in questions:
+        question.pop('sign', None)
     for i, q in enumerate(questions):
         q["id"] = i + 1
     ds = {
@@ -282,22 +292,27 @@ def run_full(pdf_bytes=None, text=None, meta=None, model=None, target=330, progr
     if not pages:
         raise RuntimeError("No extractable text (scanned PDF? needs OCR).")
     full = " ".join(t for _, t in pages)
-    fmt = detect_format(full)
+    visual = []
+    image_audit = {'status':'no_pdf','images_count':0,'message':'No source PDF was supplied; no sign pictures were guessed.'}
+    if pdf_bytes:
+        from handbook_images import reviewed_questions
+        try:
+            visual,image_audit=reviewed_questions(pdf_bytes,limit=target)
+        except (OSError, ValueError, KeyError):
+            image_audit={'status':'image_error','images_count':0,'message':'Reviewed picture assets are unavailable or failed validation. No substitute pictures were used.'}
+    fmt = image_audit.get('test_format') or detect_format(full)
+    if image_audit.get('source_title'):
+        meta.setdefault('source',image_audit['source_title'])
     for k in ("testSize", "passMark", "sections"):
         meta.setdefault(k, fmt[k])
     samples = ingest_samples(full)       # official sample questions, verbatim (if any)
-    # AUTOMATIC real sign images from the book itself (no LLM): figure + nearest caption -> question
-    visual = []
-    if pdf_bytes:
-        try:
-            import figures
-            visual, _saved = figures.build_sign_questions(pdf_bytes, meta["key"], None)
-            if progress: progress(0, 1, len(visual), "extracted %d real sign figures (with captions) from the book" % len(visual))
-        except Exception as e:
-            if progress: progress(0, 1, 0, "figure extraction unavailable (%s); text questions only" % e)
+    if progress: progress(0,1,len(visual),image_audit['message'])
     chunks = chunk_pages(pages)
     if progress: progress(0, len(chunks), len(samples) + len(visual), "%d pages, %d chunks, %d samples, %d real-image signs; format: %s" % (len(pages), len(chunks), len(samples), len(visual), fmt))
-    qs = generate(model, chunks, max(1, target - len(samples) - len(visual)), progress=progress)
-    ds = build_dataset(meta, visual + samples + qs, unit=meta.get("unit", "km/h"))
+    remaining=max(0,target-len(samples)-len(visual))
+    qs=generate(model,chunks,remaining,progress=progress) if remaining else []
+    ds = build_dataset(meta, (visual + samples + qs)[:target], unit=meta.get("unit", "km/h"))
+    image_audit['images_count']=sum(bool(q.get('image')) for q in ds['questions'])
+    ds['imageAudit']=image_audit
     if progress: progress(len(chunks), len(chunks), len(ds["questions"]), "done")
     return ds

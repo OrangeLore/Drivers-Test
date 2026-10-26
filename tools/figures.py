@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-figures.py — AUTOMATIC sign-image extraction from ANY handbook PDF, no manual work, no LLM.
+figures.py — reviewed handbook pictures plus optional unverified crop inspection tools.
 
 Idea: in every driver's handbook the sign PICTURE sits next to its CAPTION text ("Stop", "Yield",
 "School zone", ...). So we:
@@ -8,9 +8,8 @@ Idea: in every driver's handbook the sign PICTURE sits next to its CAPTION text 
   2. read the page's text with positions and attach the NEAREST caption to each figure,
   3. crop the real figure out of the page and pair it with its caption.
 
-From those (image, caption) pairs we can build real, book-sourced sign questions automatically:
-  "What does this road sign mean?"  ->  image = the cropped figure, correct answer = its caption,
-  distractors = other captions from the same handbook. Zero LLM needed for the visual questions.
+Nearest-caption pairs are unverified candidates, NOT reliable graded answers. Automatic questions
+are supplied only by checksum-identified, reviewed handbook profiles in handbook_images.py.
 
 Requires PyMuPDF (fitz), OpenCV, numpy. Degrades to no-op if they're missing.
 """
@@ -91,48 +90,9 @@ _BAD_CAP = re.compile(
     r"www\.|tel:|fax:|^\s*(figure|fig\.|page|chapter|\d))", re.I)
 
 def build_sign_questions(pdf_bytes, key, images_root, base_url="images/gen", dpi=200, limit=60):
-    """Extract real figures + captions and return (questions, saved_files). No LLM.
-    Saves cropped PNGs under images_root/gen/<key>/ ; questions reference base_url/<key>/f.png."""
+    """Return reviewed source pictures only. Never guess a caption or write uploaded data."""
     if not isinstance(key, str) or not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,39}', key):
         raise ValueError('Invalid jurisdiction key')
-    if not _available():
-        return [], []
-    try:
-        pairs = extract_pairs(pdf_bytes, dpi=dpi)
-    except Exception:
-        return [], []
-    # keep good, distinct captions
-    seen, good = set(), []
-    for p in pairs:
-        cap = p["caption"]
-        if not cap or _BAD_CAP.search(cap):
-            continue
-        low = cap.lower()
-        if low in seen:
-            continue
-        seen.add(low); good.append(p)
-    if len(good) < 4:
-        return [], []
-    # Embed cropped figures in the result; never write uploaded handbook data into public assets.
-    import base64
-    captions = [p["caption"] for p in good]
-    import random
-    questions, saved = [], []
-    for i, p in enumerate(good[:limit]):
-        fn = "sign_%03d.png" % (i + 1)
-
-        others = [c for c in captions if c.lower() != p["caption"].lower()]
-        random.shuffle(others)
-        opts = [p["caption"]] + others[:3]
-        if len(opts) < 4:
-            continue
-        questions.append({
-            "topic": "Signs", "section": "signs", "diff": "standard",
-            "q": "What does this road sign mean?",
-            "options": opts, "answer": 0,
-            "image": "data:image/png;base64," + base64.b64encode(p['png_bytes']).decode('ascii'),
-            "alt": "A road sign from the handbook (page %d)." % p["page"],
-            "source": "p. %d (figure)" % p["page"],
-            "grounding": "real figure + caption extracted from p. %d" % p["page"],
-        })
-    return questions, saved
+    from handbook_images import reviewed_questions
+    questions,_audit=reviewed_questions(pdf_bytes,limit=limit)
+    return questions,[]

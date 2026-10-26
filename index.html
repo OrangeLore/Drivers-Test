@@ -201,6 +201,7 @@
         <select id="studyTopic"></select>
       </div>
       <p class="muted" id="studyCount"></p>
+      <p class="muted hidden" id="imageReviewNotice"></p>
     </div>
     <div id="studyList"></div>
   </section>
@@ -626,6 +627,9 @@
     document.getElementById('studyCount').innerHTML=items.length+' question'+(items.length===1?'':'s')+
       (fl.length?(' · <b>'+fl.length+' 🚩 flagged</b>'):'')+
       (ds.generated?' · <span style="color:var(--bad);font-weight:700">auto-generated — please review</span>':'');
+    var notice=document.getElementById('imageReviewNotice'), audit=ds.imageAudit;
+    notice.classList.toggle('hidden',!ds.generated||!audit);
+    notice.textContent=ds.generated&&audit&&typeof audit.message==='string'?audit.message:'';
     var el=document.getElementById('studyList');
     el.innerHTML=items.map(function(x,i){ var flagged=fl.indexOf(x.id)>=0;
       var h='<div class="studyq'+(flagged?' flagged':'')+'"><div class="revq">'+escapeHtml(x.q)+'<span class="badge '+(x.diff||'standard')+'">'+(x.diff||'standard')+'</span></div>';
@@ -718,7 +722,8 @@
   function finishGen(ds){
     var err=validateDataset(ds); if(err){ gmsg('Generated but the set was invalid: '+err); return; }
     ds.generated=true; var imp=importedDatasets(); imp[ds.key]=ds; save('ac7_imported',imp); save('ac7_active_dataset',ds.key);
-    gprog(100); gmsg('✅ Added "'+ds.name+'" ('+ds.questions.length+' questions). It is now the active set — review it in Study and 🚩 flag anything that looks wrong.');
+    var imageNote=ds.imageAudit&&typeof ds.imageAudit.message==='string'?' '+ds.imageAudit.message:'';
+    gprog(100); gmsg('✅ Added "'+ds.name+'" ('+ds.questions.length+' questions).'+imageNote+' Review it in Study and 🚩 flag anything that looks wrong.');
     renderManage();
   }
   // ---------- study flags (human review) ----------

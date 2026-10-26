@@ -21,7 +21,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-Bundled data note: sample question sets are derived from official government
-driver's handbooks (e.g. Alberta, Ontario) which remain the property of their
-respective governments and are included here for educational study use. Road-sign
-images are sourced from public-domain references (US MUTCD / Wikimedia Commons).
+Bundled content is not automatically covered by the software MIT license.
+Handbook-derived sign illustrations and Alberta material: Contains information
+licensed under the Open Government Licence – Alberta (https://open.alberta.ca/licence).
+Source, page numbers and crop checksums are recorded in tools/sign_assets.json.
+The remaining schematic traffic diagrams are project illustrations, not official
+sign specifications. Ontario questions refer to the official MTO handbook;
+government source material retains its original ownership and applicable terms.
+This project is not an official government product and is not endorsed by a
+government or licensing authority.

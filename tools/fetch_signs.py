@@ -39,7 +39,12 @@ def validate_svg(data):
             raise ValueError('Active SVG content is not allowed')
         for key, value in element.attrib.items():
             name = key.split('}')[-1].lower()
-            if name.startswith('on') or (name in ('href', 'src') and not value.startswith('#')) or 'javascript:' in value.lower() or re.search(r'url\(\s*[\'"]?[^#]', value, re.I):
+            embedded_png = element.tag.split('}')[-1] == 'image' and bool(re.fullmatch(r'data:image/png;base64,[A-Za-z0-9+/]+=*', value))
+            if embedded_png:
+                import base64
+                if not base64.b64decode(value.split(',', 1)[1], validate=True).startswith(bytes.fromhex('89504e470d0a1a0a')):
+                    raise ValueError('Embedded image must be a PNG')
+            if name.startswith('on') or (name in ('href', 'src') and not value.startswith('#') and not embedded_png) or 'javascript:' in value.lower() or re.search(r'url\(\s*[\'"]?[^#]', value, re.I):
                 raise ValueError('External or active SVG attributes are not allowed')
 
 def main():

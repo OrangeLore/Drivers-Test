@@ -1,0 +1,951 @@
+{
+  "source_title": "Government of Alberta, Driver’s Guide: Cars and Light Trucks, Spring 2026",
+  "source_url": "https://open.alberta.ca/dataset/387f4e8a-6c0a-456a-ab31-995aadaf1f2b/resource/5babee5c-040d-4e41-981a-04f22e839aac/download/tec-drivers-guide-2026.pdf",
+  "source_pdf_sha256": "44674c9522de5fc61adb3a37a45b9cad549ebb941dd526b275b226fbc4b4d7d9",
+  "attribution": "Contains information licensed under the Open Government Licence – Alberta.",
+  "licence_url": "https://open.alberta.ca/licence",
+  "assets": [
+    {
+      "file": "stop.svg",
+      "pdf_page": 28,
+      "printed_page": 26,
+      "rect_reference_pixels": [
+        22,
+        662,
+        102,
+        741
+      ],
+      "png_sha256": "709908a1fa261412f84bcbf3c45a1eae0c5b7bf4955366105f5c4f4f3bb73114",
+      "question": {
+        "q": "What must you do when you see this sign?",
+        "options": [
+          "Come to a complete stop, then proceed when it is safe",
+          "Slow down and drive through",
+          "Stop only if another car is coming",
+          "Speed up to clear the intersection"
+        ],
+        "answer": 0,
+        "alt": "A red octagon-shaped sign with white letters reading STOP.",
+        "topic": "Signs",
+        "diff": "easy",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "yield.svg",
+      "pdf_page": 28,
+      "printed_page": 26,
+      "rect_reference_pixels": [
+        246,
+        122,
+        336,
+        202
+      ],
+      "png_sha256": "27094c238ab9090b6de179cf9ad5e401168146606e9875827fdf492f099050b2",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Yield — give the right-of-way to other traffic and pedestrians",
+          "Come to a full stop every time",
+          "Do not enter",
+          "Maximum speed limit"
+        ],
+        "answer": 0,
+        "alt": "A downward-pointing white triangle with a broad red border.",
+        "topic": "Signs",
+        "diff": "easy",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "donotenter.svg",
+      "pdf_page": 28,
+      "printed_page": 26,
+      "rect_reference_pixels": [
+        244,
+        403,
+        324,
+        482
+      ],
+      "png_sha256": "605e88011b6b8fbfbfff3f79d6644abb15f9154e63c4348651d8240bad652d7f",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Do not enter — do not drive past this sign",
+          "One-way traffic",
+          "No stopping",
+          "Trucks must exit"
+        ],
+        "answer": 0,
+        "alt": "A red circle with a white horizontal bar across the middle.",
+        "topic": "Signs",
+        "diff": "easy",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "speed50.svg",
+      "pdf_page": 29,
+      "printed_page": 27,
+      "rect_reference_pixels": [
+        185,
+        598,
+        253,
+        676
+      ],
+      "png_sha256": "d718fff445fcb12fb9e27db3522501507fa309a1ee65d749e302e8eb5193f252",
+      "question": {
+        "q": "What does this sign tell you?",
+        "options": [
+          "The maximum speed is 50 km/h",
+          "The minimum speed is 50 km/h",
+          "A suggested speed of 50 km/h",
+          "It is 50 km to the next town"
+        ],
+        "answer": 0,
+        "alt": "A white rectangular sign that reads MAXIMUM 50.",
+        "topic": "Speed Limits",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "oneway.svg",
+      "pdf_page": 29,
+      "printed_page": 27,
+      "rect_reference_pixels": [
+        45,
+        100,
+        148,
+        140
+      ],
+      "png_sha256": "bcf4842ca66690719431b1188f48524b60a89959d3b3d14e07fce734334d3229",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Traffic travels one way, in the direction of the arrow",
+          "Two-way traffic ahead",
+          "Do not enter",
+          "Detour to the left"
+        ],
+        "answer": 0,
+        "alt": "A black rectangular sign with a white arrow and the words ONE WAY.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "twoway.svg",
+      "pdf_page": 29,
+      "printed_page": 27,
+      "rect_reference_pixels": [
+        45,
+        192,
+        113,
+        287
+      ],
+      "png_sha256": "cfb81b0a871e27b3d61fc6c20e6ed6e4a9ee054a64e067fbac9b2999c6ade7a5",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Two-way traffic ahead",
+          "One-way street",
+          "Divided highway begins",
+          "Merging traffic"
+        ],
+        "answer": 0,
+        "alt": "A white rectangular sign with a downward arrow on the left and an upward arrow on the right.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "keepright.svg",
+      "pdf_page": 29,
+      "printed_page": 27,
+      "rect_reference_pixels": [
+        45,
+        340,
+        118,
+        435
+      ],
+      "png_sha256": "e555c5952623340a5692846c258e90fabc23378b9dc062a7a674cc067219e335",
+      "question": {
+        "q": "What does this sign tell you to do?",
+        "options": [
+          "Keep to the right (of a divider or obstacle ahead)",
+          "Turn right only",
+          "Keep left",
+          "One-way road"
+        ],
+        "answer": 0,
+        "alt": "A white rectangular sign with an obstacle and a black arrow curving around its right side.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "noleft.svg",
+      "pdf_page": 31,
+      "printed_page": 29,
+      "rect_reference_pixels": [
+        268,
+        148,
+        345,
+        225
+      ],
+      "png_sha256": "a3bbfd50880419b53b606b5e952e39e0fbaf4bc2c39f6032c5b89d1546899f06",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "No left turn",
+          "No right turn",
+          "Left turn only",
+          "Two-way traffic"
+        ],
+        "answer": 0,
+        "alt": "A left-turning arrow inside a red circle with a diagonal red line through it.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "nouturn.svg",
+      "pdf_page": 31,
+      "printed_page": 29,
+      "rect_reference_pixels": [
+        268,
+        257,
+        345,
+        336
+      ],
+      "png_sha256": "3c5cf89d335b96720fbea216a29b5deb9b074fa1c7c6b0f3100e68d915d1650f",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "U-turns are not allowed here",
+          "U-turns are allowed here",
+          "Winding road ahead",
+          "Roundabout ahead"
+        ],
+        "answer": 0,
+        "alt": "A U-turn arrow inside a red circle with a diagonal red line through it.",
+        "topic": "U-turns",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "nopass.svg",
+      "pdf_page": 31,
+      "printed_page": 29,
+      "rect_reference_pixels": [
+        382,
+        257,
+        459,
+        336
+      ],
+      "png_sha256": "0df536fec93b2b53aa4823fe99c8219fcd2ba7f654a349ce24b8ecfd0bc9d4e2",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Do not pass",
+          "Two-way traffic",
+          "No stopping",
+          "Passing is permitted"
+        ],
+        "answer": 0,
+        "alt": "Two cars side by side inside a red circle with a diagonal red line.",
+        "topic": "Passing",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "noparking.svg",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "rect_reference_pixels": [
+        22,
+        460,
+        101,
+        540
+      ],
+      "png_sha256": "724fcb76be355fcf527dffbb416b32051e47923de5b9f748d81573950838c1ff",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "No parking",
+          "Free parking here",
+          "Parking for persons with disabilities",
+          "Rest area ahead"
+        ],
+        "answer": 0,
+        "alt": "The letter P inside a red circle with a diagonal red line through it.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "no-trucks.svg",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "rect_reference_pixels": [
+        23,
+        174,
+        99,
+        251
+      ],
+      "png_sha256": "9bedad93f1f515722282e1281374824133cca053ffe3bc63d2455f977ec3b9ba",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "No trucks permitted",
+          "Truck route ahead",
+          "Trucks must stop",
+          "Truck weigh station"
+        ],
+        "answer": 0,
+        "alt": "A truck inside a red circle with a diagonal red slash.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "no-bicycles.svg",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "rect_reference_pixels": [
+        132,
+        173,
+        215,
+        253
+      ],
+      "png_sha256": "d36a21971a2e0d9ce9cb81c1ab085b8e11e4778c182ea45219baaa7b4532681c",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Bicycles are not permitted",
+          "Bicycle route",
+          "Watch for bicycles",
+          "Bicycle parking"
+        ],
+        "answer": 0,
+        "alt": "A bicycle inside a red circle with a diagonal red slash.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "no-pedestrians.svg",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "rect_reference_pixels": [
+        23,
+        61,
+        98,
+        140
+      ],
+      "png_sha256": "4cdac8e026634bf91a583e77424aa5431fc3569c1af8c46339190098224f754f",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Pedestrians are not permitted here",
+          "Pedestrian crossing",
+          "Watch for pedestrians",
+          "School zone"
+        ],
+        "answer": 0,
+        "alt": "A walking person inside a red circle with a diagonal red slash.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "school.svg",
+      "pdf_page": 33,
+      "printed_page": 31,
+      "rect_reference_pixels": [
+        46,
+        590,
+        137,
+        683
+      ],
+      "png_sha256": "fc598e93281815e55bd5f0cde36bbe108073307d261a6aaa55057fd8357055f7",
+      "question": {
+        "q": "This school sign has no speed-limit sign attached. What does it mean in Alberta?",
+        "options": [
+          "A school area — watch for children and use caution",
+          "A playground zone",
+          "A pedestrian crossing only",
+          "A hospital ahead"
+        ],
+        "answer": 0,
+        "alt": "A fluorescent yellow-green pentagon-shaped sign showing two children walking.",
+        "topic": "School & Playground Zones",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "school-zone.svg",
+      "pdf_page": 32,
+      "printed_page": 30,
+      "rect_reference_pixels": [
+        245,
+        552,
+        410,
+        645
+      ],
+      "png_sha256": "c99375d71e461342182c8e36aaa165a540edc1d3c3a244874d7d4a663d263101",
+      "question": {
+        "q": "In Alberta, what must you do when this school zone is in effect?",
+        "options": [
+          "Do not exceed the posted 30 km/h limit",
+          "Continue at 50 km/h unless children are visible",
+          "Stop beside the sign every time",
+          "Treat it only as a playground warning"
+        ],
+        "answer": 0,
+        "alt": "A fluorescent yellow-green school sign beside a white MAXIMUM 30 sign.",
+        "topic": "School & Playground Zones",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "playground.svg",
+      "pdf_page": 34,
+      "printed_page": 32,
+      "rect_reference_pixels": [
+        22,
+        266,
+        132,
+        377
+      ],
+      "png_sha256": "5a5e538812d6e10ea3bc9eef47138d56c47c1b65936708fd876307271271e619",
+      "question": {
+        "q": "This playground sign has no speed-limit sign attached. What does it mean in Alberta?",
+        "options": [
+          "A playground area — children may be near; use caution",
+          "A school zone",
+          "A bicycle route",
+          "A picnic area only"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond-shaped sign showing a child running after a ball.",
+        "topic": "School & Playground Zones",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "disabled-parking.svg",
+      "pdf_page": 34,
+      "printed_page": 32,
+      "rect_reference_pixels": [
+        22,
+        582,
+        101,
+        660
+      ],
+      "png_sha256": "fab7f22a335c0c40c7c23bc3e2bf2d73df9c0b3ed0df59039946dff6510fc46f",
+      "question": {
+        "q": "What does this sign mean?",
+        "options": [
+          "Parking reserved for persons with disabilities (permit required)",
+          "Hospital ahead",
+          "Wheelchair ramp",
+          "First aid station"
+        ],
+        "answer": 0,
+        "alt": "A blue sign with a white wheelchair symbol.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "ped.svg",
+      "pdf_page": 36,
+      "printed_page": 34,
+      "rect_reference_pixels": [
+        23,
+        45,
+        110,
+        134
+      ],
+      "png_sha256": "3b0d70e775f4f29aa7e027ede59a149050b7e80380c673352198c8fcbc034eb7",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "A pedestrian crossing ahead",
+          "A school zone",
+          "A playground",
+          "A bus stop"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond-shaped sign showing a person walking.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "curve.svg",
+      "pdf_page": 35,
+      "printed_page": 33,
+      "rect_reference_pixels": [
+        377,
+        46,
+        463,
+        135
+      ],
+      "png_sha256": "8095fe3339c293ac3f101af0f1410b1b41bf1f7671ace9ad4a293b760fc04488",
+      "question": {
+        "q": "What does this sign warn you about?",
+        "options": [
+          "A curve in the road ahead",
+          "An intersection ahead",
+          "A steep hill",
+          "A dead end"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond-shaped sign with an arrow curving to the right.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "railway.svg",
+      "pdf_page": 36,
+      "printed_page": 34,
+      "rect_reference_pixels": [
+        245,
+        146,
+        333,
+        239
+      ],
+      "png_sha256": "95866acc245dac38e5434a8ac2f328618481ca0ff69d7458489ddb8a30831022",
+      "question": {
+        "q": "What does this sign warn you about?",
+        "options": [
+          "A railway crossing ahead",
+          "A road closure",
+          "A four-way stop",
+          "A rest area"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond sign showing a road crossed by railway tracks.",
+        "topic": "Railway Crossings",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "merge.svg",
+      "pdf_page": 36,
+      "printed_page": 34,
+      "rect_reference_pixels": [
+        246,
+        421,
+        332,
+        509
+      ],
+      "png_sha256": "097006bb1f015043e98fb1c98620d818fc74d1e40d3fcf1696baef56a5b3abde",
+      "question": {
+        "q": "What does this sign warn you about?",
+        "options": [
+          "Traffic merging ahead",
+          "A sharp curve",
+          "A pedestrian crossing",
+          "The lane ends"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond-shaped sign showing one road merging into another.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "stop-ahead.svg",
+      "pdf_page": 35,
+      "printed_page": 33,
+      "rect_reference_pixels": [
+        46,
+        47,
+        133,
+        135
+      ],
+      "png_sha256": "83c464f840f0b5c6325909d7cac03db69d29b6a681a2fc4d133b00a95f460b98",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "A stop sign is ahead — prepare to stop",
+          "You must stop right now",
+          "No stopping",
+          "A stopped vehicle ahead"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond showing a black upward arrow above a red octagon.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "yield-ahead.svg",
+      "pdf_page": 35,
+      "printed_page": 33,
+      "rect_reference_pixels": [
+        155,
+        47,
+        241,
+        135
+      ],
+      "png_sha256": "0f5690c44975d3ff6b1cac718da81b3ef32fbc8756bae4f93ef8a797529085dd",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "A yield sign is ahead — prepare to give way, stopping if necessary",
+          "A stop sign is ahead",
+          "A dead end",
+          "A narrow bridge"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond showing a black upward arrow above a red-bordered downward triangle.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "signal-ahead.svg",
+      "pdf_page": 35,
+      "printed_page": 33,
+      "rect_reference_pixels": [
+        46,
+        159,
+        134,
+        247
+      ],
+      "png_sha256": "93c4613f48efc66bd47d7b2278556f7a8c6259bfdf30cfc394b6993b9f5eee0c",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "Traffic signals (lights) are ahead",
+          "A railway crossing",
+          "A hospital",
+          "A school zone"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond sign showing a traffic light.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "bump.svg",
+      "pdf_page": 37,
+      "printed_page": 35,
+      "rect_reference_pixels": [
+        160,
+        592,
+        250,
+        681
+      ],
+      "png_sha256": "7f4319bc5137f731d8682f9cb5e122ebdfe6e6ffeb8de7855278c6d834920007",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "A bump in the road ahead",
+          "A hill ahead",
+          "A curve ahead",
+          "Loose gravel"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond sign showing a bump symbol.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "lane-ends.svg",
+      "pdf_page": 37,
+      "printed_page": 35,
+      "rect_reference_pixels": [
+        160,
+        299,
+        250,
+        385
+      ],
+      "png_sha256": "7fe3c33178cc6063f136e030d225ac76038139f2c76529736905fcf1bd414639",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "The right lane ends ahead — merge left",
+          "Two lanes begin",
+          "A divided highway",
+          "A passing lane"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond showing the right lane tapering into the left.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "animal-crossing.svg",
+      "pdf_page": 36,
+      "printed_page": 34,
+      "rect_reference_pixels": [
+        137,
+        47,
+        224,
+        135
+      ],
+      "png_sha256": "6efe4f97c9e74b23c2b2da3e70e4b86e72b5c276c288d75fb5fa0c62edbe84b6",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "Watch for animals crossing the road",
+          "A petting zoo",
+          "A farm entrance",
+          "A rest area"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond showing a deer.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "bicycle-crossing.svg",
+      "pdf_page": 36,
+      "printed_page": 34,
+      "rect_reference_pixels": [
+        137,
+        159,
+        224,
+        247
+      ],
+      "png_sha256": "f8ca5d1bdf3cd01ca036786b1cd5ef71578171638a2a9a8104b6e586d78c55a3",
+      "question": {
+        "q": "What does this yellow sign warn you about?",
+        "options": [
+          "A bicycle crossing ahead",
+          "No bicycles allowed",
+          "A bicycle repair shop",
+          "A bicycle lane ends"
+        ],
+        "answer": 0,
+        "alt": "A yellow diamond showing a bicycle.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "flag-person.svg",
+      "pdf_page": 39,
+      "printed_page": 37,
+      "rect_reference_pixels": [
+        383,
+        283,
+        473,
+        374
+      ],
+      "png_sha256": "158c15cd77037e58723eace89e42e0e1ffafe01c8855285dfc8565718b74fa2b",
+      "question": {
+        "q": "What does this orange sign mean?",
+        "options": [
+          "Obey the flag person directing traffic ahead",
+          "A parade ahead",
+          "A finish line",
+          "A rest stop"
+        ],
+        "answer": 0,
+        "alt": "An orange diamond showing a person holding a flag.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "construction-worker.svg",
+      "pdf_page": 39,
+      "printed_page": 37,
+      "rect_reference_pixels": [
+        268,
+        282,
+        357,
+        375
+      ],
+      "png_sha256": "bd15c0de16d36e99210c0ca9ab1a3f2eb7300a9c3ddf0fb6035eda3c4ddd0a84",
+      "question": {
+        "q": "What does this orange sign mean?",
+        "options": [
+          "Workers are on or near the road ahead",
+          "A playground",
+          "A farm",
+          "A hiking trail"
+        ],
+        "answer": 0,
+        "alt": "An orange diamond showing a worker with a shovel.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "detour.svg",
+      "pdf_page": 39,
+      "printed_page": 37,
+      "rect_reference_pixels": [
+        269,
+        520,
+        430,
+        589
+      ],
+      "png_sha256": "303c85f5858cacddb26c4a3d2d61e0c68ca3bca795f5edd9384bc15805f14d43",
+      "question": {
+        "q": "What does this orange sign tell you?",
+        "options": [
+          "A detour follows an alternate route for the next 8 km",
+          "Make a U-turn now",
+          "Stop and turn around",
+          "Merge right immediately"
+        ],
+        "answer": 0,
+        "alt": "An orange rectangular sign reading DETOUR NEXT 8 km.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "hospital.svg",
+      "pdf_page": 38,
+      "printed_page": 36,
+      "rect_reference_pixels": [
+        245,
+        104,
+        318,
+        177
+      ],
+      "png_sha256": "134e04bf69a28d21cd830b38782b43b93ed7a5402810b5ba2d76f2464e0cbba8",
+      "question": {
+        "q": "What does this green service sign indicate?",
+        "options": [
+          "A hospital is ahead or nearby",
+          "A highway route",
+          "A hotel",
+          "A help phone"
+        ],
+        "answer": 0,
+        "alt": "A green sign with a white letter H.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "gas-services.svg",
+      "pdf_page": 38,
+      "printed_page": 36,
+      "rect_reference_pixels": [
+        360,
+        199,
+        432,
+        270
+      ],
+      "png_sha256": "3995a11d7b105c7f08eb0d9fcf6c177f91c8d388c3e30dfc98b6ffed29106b6b",
+      "question": {
+        "q": "What does this blue sign indicate?",
+        "options": [
+          "Fuel (gas) services are available",
+          "No stopping",
+          "A rest area only",
+          "A weigh station"
+        ],
+        "answer": 0,
+        "alt": "A blue sign showing a fuel pump.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "hov-diamond.svg",
+      "pdf_page": 30,
+      "printed_page": 28,
+      "rect_reference_pixels": [
+        350,
+        539,
+        381,
+        578
+      ],
+      "png_sha256": "cf6f846dee262a73e4b4eb9ee5baac525e0c44faf76ef221e255969c896864f3",
+      "question": {
+        "q": "What does this diamond symbol identify?",
+        "options": [
+          "A reserved lane — read the full sign for permitted vehicles and times",
+          "No parking",
+          "A hospital",
+          "A diamond-shaped hazard"
+        ],
+        "answer": 0,
+        "alt": "A white diamond symbol on a black background.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    },
+    {
+      "file": "bus-lane.svg",
+      "pdf_page": 30,
+      "printed_page": 28,
+      "rect_reference_pixels": [
+        246,
+        534,
+        324,
+        639
+      ],
+      "png_sha256": "f5be7ba4851988dbd89c14ae42b730f8d8e9cc17e68b30b26bd64e1d0424133d",
+      "question": {
+        "q": "During the posted times, which vehicles shown on this sign may use the reserved lane?",
+        "options": [
+          "Buses and taxis",
+          "All private cars",
+          "Bicycles only",
+          "No vehicles"
+        ],
+        "answer": 0,
+        "alt": "A reserved-lane sign showing a diamond, a bus, TAXI, an arrow and weekday time periods.",
+        "topic": "Signs",
+        "diff": "standard",
+        "section": "signs"
+      }
+    }
+  ],
+  "jurisdiction": "Alberta, Canada",
+  "test_format": {
+    "testSize": 30,
+    "passMark": 25,
+    "sections": null
+  }
+}

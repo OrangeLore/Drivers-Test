@@ -18,5 +18,10 @@ class DownloadSecurityTests(unittest.TestCase):
         for image in (Path(__file__).resolve().parents[1]/'images').glob('*.svg'):
             fetch_signs.validate_svg(image.read_bytes())
 
+    def test_embedded_images_cannot_disguise_svg_or_non_png_content(self):
+        for reference in ['data:image/svg+xml;base64,PHN2Zy8+', 'data:text/html;base64,c2NyaXB0', 'data:image/png;base64,c2NyaXB0']:
+            with self.subTest(reference=reference), self.assertRaises(ValueError):
+                fetch_signs.validate_svg(('<svg><image href="'+reference+'"/></svg>').encode())
+
 if __name__=='__main__':
     unittest.main()

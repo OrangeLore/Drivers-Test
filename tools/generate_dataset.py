@@ -13,16 +13,19 @@ def main():
     parser.add_argument('--key', required=True)
     parser.add_argument('--name', required=True)
     parser.add_argument('--jurisdiction', default='')
-    parser.add_argument('--testsize', type=int, default=30)
+    parser.add_argument('--testsize', type=int, default=None)
     parser.add_argument('--passmark', type=int, default=0)
     parser.add_argument('--n', type=int, default=120)
     parser.add_argument('--model', default=os.environ.get('AC7_MODEL', 'local-model'))
     parser.add_argument('--out', required=True)
     args = parser.parse_args()
-    meta = {'key': args.key, 'name': args.name, 'jurisdiction': args.jurisdiction,
-            'testSize': args.testsize, 'passMark': args.passmark or max(1, round(args.testsize * 0.8))}
+    meta = {'key': args.key, 'name': args.name, 'jurisdiction': args.jurisdiction}
+    if args.testsize is not None:
+        meta['testSize']=args.testsize
+    if args.passmark:
+        meta['passMark']=args.passmark
     dataset = generator.run_full(pdf_bytes=Path(args.pdf).read_bytes(), meta=meta, model=args.model, target=args.n)
-    if len(dataset['questions']) < args.testsize:
+    if len(dataset['questions']) < dataset['testSize']:
         raise SystemExit('Not enough grounded questions for requested test size; reduce --testsize or retry.')
     # Do not include workstation paths, PDF filenames or model IDs in portable metadata.
     Path(args.out).write_text(json.dumps(dataset, ensure_ascii=False, indent=2), encoding='utf-8')

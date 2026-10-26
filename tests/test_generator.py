@@ -24,5 +24,17 @@ class GeneratorSecurityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             figures.build_sign_questions(b'%PDF-', '../escape', 'unused')
 
+    def test_sign_matcher_does_not_substitute_related_but_different_signs(self):
+        for name in ['moose crossing','cattle crossing','school crossing','school zone','playground zone','pedestrian crossover','sharp curve','left lane ends','right lane narrows','bus lane']:
+            with self.subTest(name=name):
+                question={'sign':name}
+                generator.attach_images([question])
+                self.assertNotIn('image',question)
+
+    def test_exact_yield_ahead_keeps_warning_picture(self):
+        question={'sign':'yield ahead'}
+        generator.attach_images([question])
+        self.assertEqual('images/yield-ahead.svg',question['image'])
+
 if __name__=='__main__':
     unittest.main()

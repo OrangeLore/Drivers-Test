@@ -4,7 +4,63 @@ Accessible practice tests with built-in Alberta and Ontario question banks, stud
 adaptive practice, keyboard controls, text-to-speech, profiles and progress history.
 This is an unofficial study aid. Verify answers against current official handbooks.
 
-## Run locally
+## Start here — no Git experience needed
+
+1. On this GitHub page, click the green **Code** button, then **Download ZIP**.
+2. Extract the ZIP into a normal folder. Do not run it from inside the ZIP.
+3. Install **Python 3.11 or newer** from [python.org](https://www.python.org/downloads/).
+   On Windows, select **Add Python to PATH** during installation.
+4. **Windows:** open the extracted folder and double-click **`run.bat`**.
+   **Mac/Linux:** open a terminal in the folder and run **`bash run.sh`**.
+5. Your browser should open the app. If it does not, open **http://127.0.0.1:5600**.
+6. Choose **Alberta** or **Ontario**. Try **Study** first, then **Start a Practice Test**.
+
+Keep the server window open while practising. Close that window to stop the app.
+If you see “Python not found,” install Python, then close and reopen the launcher.
+You do **not** need Git, Node.js, an AI model, a paid account or a Cloudflare tunnel for ordinary practice.
+Making this GitHub repository public does not create a hosted website: download it and run it locally.
+
+## What it does
+
+- Built-in Alberta Class 7 and Ontario G1 practice questions.
+- One question at a time, with large answer buttons and no countdown timer.
+- Road-sign pictures, traffic diagrams and text descriptions of pictures.
+- **Study:** browse answers, search questions and filter by topic.
+- **Practice Test:** try a random test, then review your answers and handbook references.
+- **Learner Mode:** give extra practice to questions and topics missed previously.
+- Easy, standard and hard difficulty choices.
+- **Read aloud:** hear questions and answers using your browser's speech voices.
+- Larger text, high-contrast colours and an optional easier-reading font.
+- Keyboard controls: **1–4** to choose, **Enter** for next, **R** to read aloud.
+- Separate nickname profiles, scores and progress history.
+- Flag questions for later review, and import/export additional JSON question sets.
+- Optional, advanced local-AI handbook generation and password-protected cross-device storage.
+
+## For adults, teens and younger learners
+
+- **Adults and teens preparing for a knowledge test:** practise in short sessions, review mistakes,
+  and use the official handbook alongside the app. Beginners and returning drivers can work at their own pace.
+- **People who prefer listening or less text at once:** read-aloud, one-question screens, large controls
+  and display settings offer different ways to practise. These are convenience/accessibility features,
+  not a diagnosis, treatment or a guarantee of a passing score.
+- **Parents, tutors and instructors:** discuss why an answer is right; start with Study, then try a short
+  session together. Use nicknames rather than real names.
+- **Younger children:** use the pictures for supervised conversations about road signs, pedestrians
+  and road safety. Some licence-test content is intended for older learners. The app does not qualify
+  anyone to drive or replace legal age requirements, lessons or adult supervision.
+
+**Privacy:** by default, profiles and scores stay in this browser on this computer. They are not
+automatically shared with another device. People sharing the same browser can see them. A different
+browser, private-browsing session, or clearing browser data may remove access to that progress.
+
+**Sign accuracy:** the reported sign drawings were checked against the official guides. See
+[the illustrated sign review](docs/SIGN-REVIEW.md) for sources, corrections and remaining scope limits.
+This is an unofficial study aid, not a government test or a substitute for the current official handbook.
+
+<details>
+<summary><strong>Advanced setup, handbook generation, private sharing and developer tests</strong></summary>
+
+## Run locally from a terminal
 
 Python 3.11+ is required. The built-in app needs no third-party packages.
 
@@ -40,6 +96,20 @@ Use trusted official PDFs only: PDF parsers are not a security sandbox. Uploads 
 The public mode deliberately disables generation to prevent strangers consuming local resources.
 Generated questions require review; grounding checks do not prove the selected answer is correct.
 
+### Automatic sign pictures — no AI drawing
+
+- Upload the exact **Alberta Driver’s Guide, Spring 2026** linked in [SIGN-REVIEW.md](docs/SIGN-REVIEW.md).
+  The app recognizes its checksum and automatically pairs **36 reviewed handbook pictures** with
+  the checked questions, answers and picture descriptions. You do not need to match them yourself.
+- These are the verified source crops bundled with the app, not new AI drawings or approximate matches.
+  The result embeds the pictures, source-page references and licence attribution in its JSON.
+- For a **picture-only set**, request **36 questions** with automatic test format. This path does
+  not need a running AI model, although PDF text extraction still needs the optional packages.
+  Requesting more questions uses the local model for additional **text-only** questions.
+- A different PDF or changed handbook edition gets a visible **unreviewed-source warning**, not
+  guessed sign pictures. Other provinces/editions need their own reviewed source profile first.
+- Study shows the picture-review status. Continue to review generated text questions yourself.
+
 CLI: `python tools/generate_dataset.py --pdf handbook.pdf --key sample --name Sample --n 30 --out sample-testset.json`.
 Imported JSON is limited and validated. Remote tracking images and executable content are rejected.
 Cropped handbook images are embedded in the private result rather than saved into public assets.
@@ -69,3 +139,5 @@ node --test tests/security.test.cjs
 
 See `SECURITY.md` for the threat model and public-release checklist. MIT software license;
 see `LICENSE` for separate bundled-data ownership notes.
+
+</details>
