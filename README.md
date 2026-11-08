@@ -4,7 +4,47 @@ Accessible practice tests with built-in Alberta and Ontario question banks, stud
 adaptive practice, keyboard controls, text-to-speech, profiles and progress history.
 This is an unofficial study aid. Verify answers against current official handbooks.
 
-## Start here — no Git experience needed
+## Android phone edition — download and install
+
+**[Download Road Trip Practice 1.0.1 APK](https://github.com/OrangeLore/Drivers-Test/releases/download/android-v1.0.1/Road-Trip-Practice-1.0.1.apk)**
+· [Release notes and checksums](https://github.com/OrangeLore/Drivers-Test/releases/tag/android-v1.0.1)
+· [Complete Android guide and local build instructions](android/README.md)
+
+1. Download the **APK** to your Android phone. GitHub's **Code → Download ZIP** is source code,
+   not a phone installer.
+2. Open **My Files → Downloads** and tap `Road-Trip-Practice-1.0.1.apk`.
+3. If prompted, temporarily allow **Install unknown apps** for that file manager/browser.
+4. Tap **Install**, then **Open**; turn the install permission off afterwards.
+5. Choose whether to enable achievements, select Alberta or Ontario, and try **Study**.
+
+The APK is server-free and offline: no Python, running computer, account, ads, analytics or
+INTERNET permission. It targets Android 8.0+ and is intended for devices such as the Galaxy S20 FE,
+but a physical S20 FE has not been tested. If Android/Play Protect blocks installation, investigate
+the warning rather than disabling phone security globally. Install updates over the existing app;
+uninstalling or clearing app data removes local progress.
+
+### Optional Android rewards and sarcastic achievements
+
+- **Opt in at first start**, separately for each nickname profile; change it later in Settings.
+- Earn coins for new correct answers, correcting learning gaps and spaced mastery—not endless repeats.
+- Choose collectible cards, car colours, garage themes and stickers. No money or random loot boxes.
+- Unlock a **three-level parking logic minigame**. It is entertainment, not a driving simulator.
+- **13 original sarcastic achievements**, with queued **NEW ACHIEVEMENT!** pop-ups after a quiz,
+  purchase or puzzle—not while answering. Dismiss all or switch the pop-ups off without losing rewards.
+- Example: **MIRROR MIRACLE** — “You learned what mirrors are for. Congratulations. Your head can
+  now do more than present your beautiful face to the world.”
+- Offline read-aloud uses an installed English Android voice; the app cannot download a voice.
+
+**Verified:** signed APK; no requested Android permissions; 35 Python and 22 JavaScript tests;
+Android 11 emulator installation/update, quizzes, rewards, purchases, a puzzle solution, pop-ups,
+Back navigation and persistence. Native audio remains unverified because the test emulator has no
+TTS engine. See [Android verification and limitations](android/VERIFICATION.md).
+
+The existing desktop/web edition below is preserved. Its optional server and handbook generator
+are **not included in the APK**. All Android source, asset-adaptation and build logic is in this repo;
+private signing keys and local learner/test data are not.
+
+## Desktop/web — start here, no Git experience needed
 
 1. On this GitHub page, click the green **Code** button, then **Download ZIP**.
 2. Extract the ZIP into a normal folder. Do not run it from inside the ZIP.
@@ -134,7 +174,7 @@ Stop both processes after testing. Quick tunnels are not a production uptime gua
 
 ```sh
 python -m unittest discover -s tests -v
-node --test tests/security.test.cjs
+node --test tests/security.test.cjs tests/rewards.test.cjs tests/parking.test.cjs
 ```
 
 See `SECURITY.md` for the threat model and public-release checklist. MIT software license;

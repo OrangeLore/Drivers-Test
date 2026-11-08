@@ -40,3 +40,14 @@ images/gen/
 guide_text.txt
 start_local.bat
 *.tmp
+
+# Android outputs and private signing material
+android/build/
+*.apk
+*.aab
+*.apks
+*.idsig
+*.jks
+*.keystore
+*.dpapi
+local.properties

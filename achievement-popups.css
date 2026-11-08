@@ -1,0 +1,15 @@
+#rtAchievement{box-sizing:border-box;width:min(540px,calc(100% - 28px));max-height:calc(100dvh - 36px);overflow-y:auto;padding:22px;border:3px solid #ffbd58;border-radius:20px;background:linear-gradient(145deg,#111b30,#263451);color:#f6f7fc;box-shadow:0 0 0 5px #111b3080,0 20px 80px #0008;text-align:center;font-size:calc(16px*var(--fs,1))}
+#rtAchievement::backdrop{background:#030815c4}
+.rt-announcement-label{font-size:1em;font-weight:900;letter-spacing:.1em;color:#ffcc73;margin:0 0 9px}
+.rt-announcement-icon{font-size:36px}
+#rtAchievementTitle{font-size:1.3em;line-height:1.2;margin:10px 0;color:#fff;outline:none}
+#rtAchievementBody{line-height:1.45;font-size:1em}
+#rtAchievement .muted{color:#bfcce1;font-size:.85em}
+.rt-announcement-note{font-size:.75em;color:#bfcce1;line-height:1.35}
+#rtAchievement .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+#rtAchievement .btn{background:#eef2fb;color:#172338;border-color:#c8d4ea;min-height:44px;white-space:normal;font-size:.85em;padding:10px}
+#rtAchievement .btn:first-child{grid-column:1/-1;background:#ffcc73;color:#202836;border-color:#ffcc73;font-size:1em}
+#rtAchievement button:focus-visible{outline:3px solid #73e4fa;outline-offset:4px}
+#rtPopupToggle{margin:12px 0 0}
+@media(max-width:430px){#rtAchievement{padding:18px 14px}.rt-announcement-label{font-size:.95em;letter-spacing:.06em}}
+@media(prefers-reduced-motion:reduce){#rtAchievement{animation:none;transition:none}}
